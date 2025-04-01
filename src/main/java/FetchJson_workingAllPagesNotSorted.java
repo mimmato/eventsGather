@@ -1,18 +1,19 @@
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
 import com.google.gson.Gson;
 import org.jsoup.Jsoup;
 
-public class FetchJson {
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.util.ArrayList;
+import java.util.List;
+
+public class FetchJson_workingAllPagesNotSorted {
     private static final String BASE_URL = "https://panel.bilet.bg/api/v1/events";
     private static final HttpClient client = HttpClient.newHttpClient();
 
     public static void main(String[] args) {
-        List<EventsStructure> allEvents = new ArrayList<>();
+        List<EventsStructure_brokenUI> allEvents = new ArrayList<>();
         String nextPageUrl = BASE_URL + "?page=1";
 
         try {
@@ -33,7 +34,7 @@ public class FetchJson {
                     ResponseWrapper responseWrapper = gson.fromJson(jsonResponse, ResponseWrapper.class);
 
                     if (responseWrapper.data != null) {
-                        for (EventsStructure event : responseWrapper.data) {
+                        for (EventsStructure_brokenUI event : responseWrapper.data) {
                             if (!event.isFinished()) { // Filter out finished events
                                 allEvents.add(event);
                                 System.out.println("Event: " + event.getName());

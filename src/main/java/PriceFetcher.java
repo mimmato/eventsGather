@@ -8,7 +8,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class PriceFetcher_beforeUI {
+public class PriceFetcher {
 
     private static final HttpClient client = HttpClient.newHttpClient();
 
@@ -42,11 +42,12 @@ public class PriceFetcher_beforeUI {
                 if (ticketBoxes.isEmpty()) {
                     System.out.println("No ticket prices found for " + event.getName());
                 } else {
+                    System.out.println("Price categories: ");
                     for (Element ticketBox : ticketBoxes) {
-                        if (ticketBox.hasClass("disabled")) continue; // Skip disabled tickets
-
+                        if (ticketBox.hasClass("disabled"))
+                            continue; // Skip disabled tickets
                         for (Element priceElement : ticketBox.select(".price-info-pc .price-block .ng-star-inserted")) {
-                            System.out.println("Price: " + priceElement.text() + " BGN");
+                            System.out.println(priceElement.text() + " BGN");
                         }
                     }
                 }

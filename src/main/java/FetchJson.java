@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class FetchJson_workingBeforeUI {
+public class FetchJson {
     private static final String BASE_URL = "https://panel.bilet.bg/api/v1/events";
     private static final HttpClient client = HttpClient.newHttpClient();
 
@@ -56,7 +56,6 @@ public class FetchJson_workingBeforeUI {
             System.out.println("Total Events Found: " + allEvents.size());
             System.out.println("--------------------");
 
-            // === SORT EVENTS BY DATE (ignoring time) ===
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
             allEvents.sort(Comparator.comparing(event -> {
                 String dateTime = event.getDate(); // Example: "2025-04-11 19:00"
@@ -68,9 +67,9 @@ public class FetchJson_workingBeforeUI {
             for (EventsStructure event : allEvents) {
                 System.out.println("Event: " + event.getName());
                 System.out.println("Date: " + event.getDate());
-                System.out.println("Event Link: " + "https://bilet.bg/bg/events/" + event.getSlug());
+                System.out.println("Event Info: " + "https://bilet.bg/bg/events/" + event.getSlug());
 //                System.out.println("Page source: " + nextPageUrl);
-                System.out.println("Buy ticket: " + "https://bilet.bg/bg/cart/" + event.getSlug());
+                System.out.println("Buy Ticket: " + "https://bilet.bg/bg/cart/" + event.getSlug());
 
                 // Clean description (remove HTML tags)
                 if (event.getDescription() != null) {

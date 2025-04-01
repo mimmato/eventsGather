@@ -1,13 +1,12 @@
+import com.google.gson.Gson;
+import org.jsoup.Jsoup;
+
+import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.net.URI;
-import java.util.List;
-import com.google.gson.Gson;
-import com.google.gson.annotations.SerializedName;
-import org.jsoup.Jsoup;
 
-public class FetchJson {
+public class FetchJson_workingSinglePage {
 
     public static void main(String[] args) {
         String url = "https://panel.bilet.bg/api/v1/events";
@@ -40,7 +39,7 @@ public class FetchJson {
                     System.out.println("--------------------------------");
 
                     int count = 0; // Counter for unfinished events
-                    for (EventsStructure event : responseWrapper.data) {
+                    for (EventsStructure_brokenUI event : responseWrapper.data) {
                         if (!event.isFinished()) { // Only include unfinished events
                             System.out.println("Event: " + event.getName());
                             System.out.println("Date: " + event.getDate());

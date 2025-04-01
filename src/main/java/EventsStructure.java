@@ -1,6 +1,6 @@
 import com.google.gson.annotations.SerializedName;
 
-public class EventsStructure_beforeUI {
+public class EventsStructure {
     @SerializedName("name")
     private String name;
 
