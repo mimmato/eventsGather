@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class FetchJson {
+public class BiletBg {
     private static final String BASE_URL = "https://panel.bilet.bg/api/v1/events";
     private static final HttpClient client = HttpClient.newHttpClient();
 

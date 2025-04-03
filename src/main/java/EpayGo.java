@@ -36,11 +36,15 @@ public class EpayGo {
                     String eventName = event.getString("SALE.NAME");
                     String eventDateTime = event.getString("SALE.EVENT_DATE");
                     String eventPlace = event.getString("SALE.EVENT_PLACE");
+                    String publicId = event.getString("SALE.PUBLIC_ID");
+
+                    String eventUrl = "https://epaygo.bg/" + publicId;
 
                     // Output event details
                     System.out.println("Event Name: " + eventName);
                     System.out.println("Event Date and Time: " + eventDateTime);
                     System.out.println("Event Place: " + eventPlace);
+                    System.out.println("Event Link: " + eventUrl);
                     System.out.println("--------------------");
                 }
             } else {
