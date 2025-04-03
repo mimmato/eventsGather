@@ -1,3 +1,5 @@
+package BiletBG;
+
 import com.google.gson.Gson;
 import org.jsoup.Jsoup;
 
@@ -39,7 +41,7 @@ public class FetchJson_workingSinglePage {
                     System.out.println("--------------------------------");
 
                     int count = 0; // Counter for unfinished events
-                    for (EventsStructure_brokenUI event : responseWrapper.data) {
+                    for (EventsStructure event : responseWrapper.data) {
                         if (!event.isFinished()) { // Only include unfinished events
                             System.out.println("Event: " + event.getName());
                             System.out.println("Date: " + event.getDate());

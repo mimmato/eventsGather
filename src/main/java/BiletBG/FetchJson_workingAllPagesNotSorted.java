@@ -1,3 +1,5 @@
+package BiletBG;
+
 import com.google.gson.Gson;
 import org.jsoup.Jsoup;
 
@@ -13,7 +15,7 @@ public class FetchJson_workingAllPagesNotSorted {
     private static final HttpClient client = HttpClient.newHttpClient();
 
     public static void main(String[] args) {
-        List<EventsStructure_brokenUI> allEvents = new ArrayList<>();
+        List<EventsStructure> allEvents = new ArrayList<>();
         String nextPageUrl = BASE_URL + "?page=1";
 
         try {
@@ -34,7 +36,7 @@ public class FetchJson_workingAllPagesNotSorted {
                     ResponseWrapper responseWrapper = gson.fromJson(jsonResponse, ResponseWrapper.class);
 
                     if (responseWrapper.data != null) {
-                        for (EventsStructure_brokenUI event : responseWrapper.data) {
+                        for (EventsStructure event : responseWrapper.data) {
                             if (!event.isFinished()) { // Filter out finished events
                                 allEvents.add(event);
                                 System.out.println("Event: " + event.getName());

@@ -1,3 +1,5 @@
+package BiletBG;
+
 import com.google.gson.Gson;
 import org.jsoup.Jsoup;
 
@@ -18,6 +20,9 @@ public class BiletBg {
     public static void main(String[] args) {
         List<EventsStructure> allEvents = new ArrayList<>();
         String nextPageUrl = BASE_URL + "?page=1";
+
+        System.out.println("Scraping BiletBG for tickets...");
+        System.out.println("----------------------------------");
 
         try {
             while (nextPageUrl != null) {
@@ -41,7 +46,7 @@ public class BiletBg {
                             if (!event.isFinished()) { // Filter out finished events
                                 allEvents.add(event);
 
-//                                PriceFetcher.fetchPriceFromCartPage(event.getSlug());
+//                                BiletBG.PriceFetcher.fetchPriceFromCartPage(event.getSlug());
                             }
                         }
                     }
@@ -52,9 +57,9 @@ public class BiletBg {
                     break;
                 }
             }
-
+            System.out.println("----------------------------------");
             System.out.println("Total Events Found: " + allEvents.size());
-            System.out.println("--------------------");
+            System.out.println("----------------------------------");
 
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
             allEvents.sort(Comparator.comparing(event -> {
@@ -79,7 +84,7 @@ public class BiletBg {
                     System.out.println("Description: N/A");
                 }
                 PriceFetcher.fetchEventDetails(event);
-                System.out.println("--------------------");
+                System.out.println("----------------------------------");
             }
 
         } catch (Exception e) {

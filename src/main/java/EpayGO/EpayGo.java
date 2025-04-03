@@ -1,3 +1,5 @@
+package EpayGO;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -14,6 +16,7 @@ public class EpayGo {
             String url = "https://epaygo.bg/epaygo/concerts-and-festivals";
             Document doc = Jsoup.connect(url).get();
 
+            System.out.println("Scraping EpayGo for tickets...");
             System.out.println("Page source found: " + url);
             // Step 2: Find the script tag containing the event data
             Element script = doc.selectFirst("script:containsData(events_page_tt)");
